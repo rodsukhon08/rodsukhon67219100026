@@ -1,0 +1,86 @@
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	font-family: system-ui, sans-serif;
+	line-height: 1.65;
+	color: #1e293b;        /* สีตัวอักษรเนื้อหา */
+	background: #f0f6fc;    /* สีพื้นหลังตัวเว็บ (ฟ้าอ่อนมาก) */
+}
+header, footer {
+	padding: 1rem;
+	color: #ffffff;         /* สีตัวอักษรส่วนหัวและท้ายเว็บ */
+	background: #163a5f;    /* สีพื้นหลังส่วนหัวและท้ายเว็บ (น้ำเงินเข้ม) */
+}
+.site-name {
+	margin: 0 0 0.5rem;
+	font-size: 1.25rem;
+	font-weight: bold;
+}
+nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+nav a {
+	display: block;
+	padding: 0.35rem 0.75rem;
+	color: #ffffff;         /* สีตัวอักษรบนเมนู */
+	text-decoration: none;
+	border-radius: 0.35rem;
+}
+nav a:hover, nav a[aria-current="page"] {
+	background: #dcebfa;    /* พื้นหลังเมนูเมื่อชี้เมาส์ (ฟ้าอ่อน) */
+	color: #102a43;
+}
+a:focus-visible {
+	outline: 3px solid #2563eb;
+	outline-offset: 3px;
+}
+main {
+	width: min(92%, 56rem);
+	margin: 2rem auto;
+}
+.card {
+	margin: 1rem 0;
+	padding: 1.25rem;
+	border: 1px solid #cbd5e1;
+	border-radius: 0.75rem;
+	background: #ffffff;    /* สีพื้นหลังกรอบ card */
+}
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	border-radius: 0.5rem;
+}
+label {
+	display: block;
+	margin: 0.75rem 0 0.35rem;
+	font-weight: bold;
+}
+input, select {
+	width: 100%;
+	padding: 0.6rem 0.75rem;
+	border: 1px solid #cbd5e1;
+	border-radius: 0.35rem;
+	font-family: inherit;
+}
+button, .button {
+	display: inline-block;
+	margin-top: 0.5rem;
+	padding: 0.6rem 1rem;
+	border: none;
+	border-radius: 0.35rem;
+	background: #1d4ed8;    /* สีปุ่ม (น้ำเงินกลาง) */
+	color: #ffffff;
+	text-decoration: none;
+	cursor: pointer;
+}
+button:hover, .button:hover {
+	background: #163a5f;
+}

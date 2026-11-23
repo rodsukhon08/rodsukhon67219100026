@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>หน้าแรก | เที่ยวบ้านเรา</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .slider {
+    max-width: 780px;
+    margin: 16px auto;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .slides {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  .slides img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 10px 0 4px;
+  }
+  .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #cbd5e1;
+    cursor: pointer;
+  }
+  .dot.active {
+    background: #163a5f;
+    width: 20px;
+    border-radius: 999px;
+  }
+</style>
+</head>
+<body>
+<header>
+<p class="site-name">เที่ยวบ้านเรา</p>
+<nav aria-label="เมนูหลัก">
+<ul>
+<li><a href="index.html">หน้าแรก</a></li>
+<li><a href="places.html">ที่เที่ยว</a></li>
+<li><a href="food.html">อาหาร</a></li>
+<li><a href="plan.html">วางแผนเที่ยว</a></li>
+<li><a href="travel.html">ข้อมูลการเดินทาง</a></li>
+<li><a href="login.html">เข้าสู่ระบบ</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<h2>สถานที่ท่องเที่ยวแนะนำ</h2>
+
+<div class="slider" id="slider">
+  <div class="slides" id="slides">
+    <img src="images/Kaow.jpg" alt="รูปที่ 1">
+    <img src="images/aomanow.jpg" alt="รูปที่ 2">
+    <img src="images/KLM.jpg" alt="รูปที่ 3">
+    <img src="images/lukmuang.jpg" alt="รูปที่ 4">
+    <img src="images/sapanpla.jpg" alt="รูปที่ 5">
+  </div>
+  <div class="dots" id="dots"></div>
+</div>
+
+<script>
+  const slides = document.getElementById('slides');
+  const total = slides.children.length;
+  const dotsBox = document.getElementById('dots');
+  let index = 0;
+  let timer;
+
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('span');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goTo(i);
+    dotsBox.appendChild(dot);
+  }
+
+  function goTo(i) {
+    index = (i + total) % total;
+    slides.style.transform = `translateX(-${index * 100}%)`;
+    [...dotsBox.children].forEach((d, idx) => {
+      d.classList.toggle('active', idx === index);
+    });
+  }
+
+  function startSlide(speed = 2500) {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(index + 1), speed);
+  }
+
+  startSlide(2500);
+  const slider = document.getElementById('slider');
+  slider.addEventListener('mouseenter', () => {
+    goTo(index + 1);
+    startSlide(1200);
+  });
+  slider.addEventListener('mouseleave', () => startSlide(2500));
+</script>
+
+<h1>เที่ยวบ้านเราในหนึ่งวัน</h1>
+<p>ชวนเดินตลาด ชิมอาหารพื้นถิ่น และพักชมวิวในชุมชน</p>
+<section class="card">
+<h2>เริ่มจากจุดที่คุณสนใจ</h2>
+<p>เลือกสถานที่ที่อยากไป แล้วจัดเส้นทางให้เหมาะกับเวลาของคุณ</p>
+<a class="button" href="places.html">ดูแหล่งท่องเที่ยว</a>
+</section>
+</main>
+<footer>
+<p>รสสุคนธ์67219100026 ใบงานฝึกปฏิบัติวิชาการสร้างเว็บไซต์ทางธุรกิจ</p>
+</footer>
+</body>
+</html>
